@@ -20,6 +20,7 @@ services:
       - minio_data:/data
     # ports:
     #   - 9001:9001
+    network_mode: "host"
     environment:
       - "MINIO_ACCESS_KEY=minio"
       - "MINIO_SECRET_KEY=myminiokeythatishouldchange123"
@@ -27,6 +28,7 @@ services:
 
   createbuckets:
     image: minio/mc
+    network_mode: "host"
     depends_on:
       - minio
     entrypoint: >
